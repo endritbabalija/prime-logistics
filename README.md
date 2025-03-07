@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+- [x] **Section Setup:**  
+  - Create a dedicated section on the landing page titled "Shipping Cost Calculator".
 
-## Getting Started
+- [x] **Input Fields:**  
+  - Add fields for:
+    - Package Weight (user enters actual weight).
+    - Package Dimensions (Length, Width, and Height).
+    - Destination Type (dropdown/radio options: e.g., within Kosovo, neighboring regions, international).
 
-First, run the development server:
+- [x] **Service Option Toggle:**  
+  - Implement a selection control for "Transport të plotë" (full transport) vs. "Transport parcial" (partial transport).
+  - Ensure this choice adjusts the calculation parameters accordingly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [x] **Dimensional Weight Calculation:**  
+  - Calculate dimensional weight using the formula:  
+    \[
+    \text{Dimensional Weight} = \frac{\text{Length} \times \text{Width} \times \text{Height}}{\text{DIM Divisor}}
+    \]
+  - Use the appropriate DIM divisor based on local standards (e.g., 5000 for metric).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [x] **Determine Billable Weight:**  
+  - Compare actual weight and dimensional weight; use the higher value as the billable weight.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [x] **Cost Estimation Formula:**  
+  - Apply a base fee plus a per-unit weight rate to the billable weight.
+  - Adjust the rate/fee based on whether "full" or "partial" transport is selected.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [x] **Result Display:**  
+  - Present the calculated shipping cost in a real-time updated output area.
 
-## Learn More
+- [x] **User Guidance:**  
+  - Add brief instructions or tooltips explaining each field and the service options.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] **Testing & Validation:**  
+  - Validate all input values.
+  - Ensure the calculator recalculates the estimate immediately upon any change.
