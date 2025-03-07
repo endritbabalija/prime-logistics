@@ -194,9 +194,9 @@ export default function ServicesSection() {
                 
                 <div className="space-y-8">
                   <p className="text-gray-600">
-                  Me përvojë në transportimin e mallrave me përmasa të mëdha dhe peshë të rëndë, si dhe me një rrjet global bashkëpunëtorësh, kemi mundësi t'i dërgojmë në çdo destinacion.
+                  Me përvojë në transportimin e mallrave me përmasa të mëdha dhe peshë të rëndë, si dhe me një rrjet global bashkëpunëtorësh, kemi mundësi t&apos;i dërgojmë në çdo destinacion.
                   
-                  Ekipi ynë ndërkombëtar i ekspertëve në ngarkesa speciale njeh sfidat e këtyre dërgesave dhe është i gatshëm t'ju mbështesë në çdo hap. <br /><br />Trajtimi i ngarkesave speciale kërkon një qasje tjetër nga kontejnerët standardë, prandaj ne ofrojmë zgjidhje të personalizuara për të siguruar cilësi dhe siguri maksimale në çdo dërgesë.
+                  Ekipi ynë ndërkombëtar i ekspertëve në ngarkesa speciale njeh sfidat e këtyre dërgesave dhe është i gatshëm t&apos;ju mbështesë në çdo hap. <br /><br />Trajtimi i ngarkesave speciale kërkon një qasje tjetër nga kontejnerët standardë, prandaj ne ofrojmë zgjidhje të personalizuara për të siguruar cilësi dhe siguri maksimale në çdo dërgesë.
                   </p>
                   
                   <div>

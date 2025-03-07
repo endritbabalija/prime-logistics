@@ -54,7 +54,7 @@ const ShippingCalculator = () => {
 
   // Calculate shipping cost
   useEffect(() => {
-    if (billableWeight && destinationType) {
+    if (billableWeight && destinationType && transportType && rates && transportMultiplier) {
       const { baseFee, ratePerKg } = rates[destinationType as keyof typeof rates];
       const multiplier = transportMultiplier[transportType as keyof typeof transportMultiplier];
       
@@ -63,13 +63,7 @@ const ShippingCalculator = () => {
     } else {
       setShippingCost(null);
     }
-  }, [billableWeight, destinationType, transportType]);
-
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // You could add additional validation or processing here
-  };
+  }, [billableWeight, destinationType, transportType, rates, transportMultiplier]);
 
   return (
     <section id="shipping-calculator" className="py-16 bg-gray-50">
@@ -230,8 +224,8 @@ const ShippingCalculator = () => {
                 The higher value is used as the billable weight.
               </p>
               <p>
-                <strong>Transport types:</strong> "Transport të plotë" (full transport) means dedicated shipping for your package, 
-                while "Transport parcial" (partial transport) means your package shares space with others, resulting in lower costs.
+                <strong>Transport types:</strong> &quot;Transport të plotë&quot; (full transport) means dedicated shipping for your package, 
+                while &quot;Transport parcial&quot; (partial transport) means your package shares space with others, resulting in lower costs.
               </p>
             </div>
           </div>
