@@ -1,9 +1,42 @@
 "use client";
 
 import { useScroll } from '@/context/ScrollContext';
+import { useState } from 'react';
 
 export default function ContactSection() {
   const { contactRef } = useScroll();
+  const [status, setStatus] = useState('');
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus('sending');
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    formData.append("access_key", "5db60ce6-871c-4b24-a851-e78a46095153");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      });
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  }
 
   return (
     <section className="py-16 md:py-24 bg-[#FFFFFF]" ref={contactRef}>
@@ -61,7 +94,7 @@ export default function ContactSection() {
           <div>
             <div className="bg-white p-8 border border-gray-300">
               <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -69,7 +102,9 @@ export default function ContactSection() {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       id="name"
+                      required
                       placeholder="Emri juaj"
                       className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
@@ -80,7 +115,9 @@ export default function ContactSection() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       id="email"
+                      required
                       placeholder="Email Adresa Juaj"
                       className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
@@ -93,7 +130,9 @@ export default function ContactSection() {
                   </label>
                   <input
                     type="text"
+                    name="subject"
                     id="subject"
+                    required
                     placeholder="Si mund te ju ndihmojme?"
                     className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
@@ -104,16 +143,34 @@ export default function ContactSection() {
                     Mesazhi
                   </label>
                   <textarea
+                    name="message"
                     id="message"
                     rows={4}
+                    required
                     placeholder="Mesazhi juaj"
                     className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="w-full bg-blue-600 text-white py-3 font-medium hover:bg-blue-700 transition-colors">
-                  Dergo
+                <button 
+                  type="submit" 
+                  className="w-full bg-blue-600 text-white py-3 font-medium hover:bg-blue-700 transition-colors disabled:bg-blue-400"
+                  disabled={status === 'sending'}
+                >
+                  {status === 'sending' ? 'Duke dërguar...' : 'Dergo'}
                 </button>
+
+                {status === 'success' && (
+                  <div className="text-green-600 text-center mt-2">
+                    Mesazhi u dërgua me sukses!
+                  </div>
+                )}
+                
+                {status === 'error' && (
+                  <div className="text-red-600 text-center mt-2">
+                    Pati një problem. Ju lutemi provoni përsëri.
+                  </div>
+                )}
               </form>
             </div>
           </div>
