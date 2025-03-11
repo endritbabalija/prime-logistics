@@ -480,8 +480,8 @@ export default function ServicesSection() {
                     Vlera më e lartë përdoret si pesha faturuese.
                   </p>
                   <p>
-                    <strong>Llojet e Transportit:</strong> "Transport i plotë" do të thotë që dërgesa juaj ka një automjet të dedikuar vetëm për të, 
-                    ndërsa "Transport parcial" do të thotë që pakoja juaj ndan hapësirën me dërgesa të tjera, duke rezultuar në kosto më të ulëta.
+                    <strong>Llojet e Transportit:</strong> &ldquo;Transport i plotë&rdquo; do të thotë që dërgesa juaj ka një automjet të dedikuar vetëm për të, 
+                    ndërsa &ldquo;Transport parcial&rdquo; do të thotë që pakoja juaj ndan hapësirën me dërgesa të tjera, duke rezultuar në kosto më të ulëta.
                   </p>
                   <p className="text-gray-600">
                     Shërbimi &ldquo;Transport i plotë&rdquo; përfshin përdorimin ekskluziv të një kamioni për ngarkesën tuaj.
