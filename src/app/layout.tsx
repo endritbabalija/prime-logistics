@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { ScrollProvider } from "@/context/ScrollContext";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import React from "react";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",

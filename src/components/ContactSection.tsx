@@ -59,7 +59,7 @@ export default function ContactSection() {
           </div>
           
           <div>
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <div className="bg-white p-8 border border-gray-300">
               <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
               <form className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -71,7 +71,7 @@ export default function ContactSection() {
                       type="text"
                       id="name"
                       placeholder="Emri juaj"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -82,7 +82,7 @@ export default function ContactSection() {
                       type="email"
                       id="email"
                       placeholder="Email Adresa Juaj"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function ContactSection() {
                     type="text"
                     id="subject"
                     placeholder="Si mund te ju ndihmojme?"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
                 
@@ -107,11 +107,11 @@ export default function ContactSection() {
                     id="message"
                     rows={4}
                     placeholder="Mesazhi juaj"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="w-full bg-[#0056b3] text-white py-3 rounded-lg font-medium hover:bg-[#004494] transition-colors">
+                <button type="submit" className="w-full bg-blue-600 text-white py-3 font-medium hover:bg-blue-700 transition-colors">
                   Dergo
                 </button>
               </form>

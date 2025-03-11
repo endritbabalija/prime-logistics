@@ -20,22 +20,27 @@ export default function TrackingSection() {
     canvas.height = canvas.offsetHeight;
     
     // Draw dotted world map effect
-    const dotSize = 2;
-    const spacing = 20;
+    const baseSize = 1; // Reduced base dot size
+    const spacing = 35; // Increased spacing between dots significantly
     const rows = Math.floor(canvas.height / spacing);
     const cols = Math.floor(canvas.width / spacing);
     
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.15)'; // Further reduced opacity for subtlety
     
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         // Create a pattern that resembles a world map
-        // This is a simplified approach
         const x = j * spacing;
         const y = i * spacing;
         
-        // Random dots to create a map-like pattern
-        if (Math.random() > 0.6) {
+        // Random dots with varying probability based on position
+        // This creates a more interesting pattern that can resemble continents
+        const probability = 0.4; // Significantly reduced probability for fewer dots
+        
+        if (Math.random() < probability) {
+          // Vary the dot size slightly for a more natural look
+          const dotSize = baseSize * (0.8 + Math.random() * 0.6);
+          
           ctx.beginPath();
           ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fill();

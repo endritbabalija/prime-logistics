@@ -1,21 +1,21 @@
 "use client";
 
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useScroll } from '@/context/ScrollContext';
 
 export default function HeroSection() {
   // Get the scrollToServices function from the ScrollContext
-  const { scrollToServices } = useScroll();
+  const { scrollToServices, scrollToCalculator } = useScroll();
   
   // State to track viewport height for mobile devices
-  const [viewportHeight, setViewportHeight] = useState('100vh');
+  const [viewportHeight, setViewportHeight] = useState('90vh');
 
   // Effect to handle mobile viewport height issues
   useEffect(() => {
     // Function to update viewport height
     const updateViewportHeight = () => {
-      setViewportHeight(`${window.innerHeight}px`);
+      // Calculate 90% of the viewport height
+      setViewportHeight(`${window.innerHeight * 0.9}px`);
     };
 
     // Set initial height
@@ -33,17 +33,18 @@ export default function HeroSection() {
       className="relative bg-gray-900 w-full overflow-hidden"
       style={{ height: viewportHeight }}
     >
-      {/* Dark background with uploaded image */}
+      {/* Video background */}
       <div className="absolute inset-0 w-full h-full">
-        <Image 
-          src="/images/seb-creativo-3jG-UM8IZ40-unsplash.jpg" 
-          alt="Logistics truck on mountain road"
-          fill
-          priority
-          sizes="100vw"
-          quality={90}
-          className="object-cover"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-cover w-full h-full"
+        >
+          <source src="/videos/truck-in-traffic-on-highway-viaduct-bridge-view-fr-2023-11-27-05-29-47-utc (1).mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-black/40"></div> {/* Overlay for better text visibility */}
       </div>
       
@@ -53,12 +54,12 @@ export default function HeroSection() {
         {/* Main content - centered */}
         <div className="flex flex-col items-center justify-center text-center pt-24 pb-12 flex-1">
           <div>
-            <p className="text-gray-300 uppercase tracking-wider text-sm">LOGISTIC</p>
-            <h1 className="text-2xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white mt-4">
+            <p className="text-gray-300 uppercase tracking-wider text-sm md:text-base">Import - Export</p>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-9xl font-bold leading-tight text-white mt-4">
               Transport<br />Ndërkombëtar
             </h1>
-            <h2 className="text-sm sm:text-base md:text-lg text-gray-300 mt-4 max-w-3xl mx-auto">
-              Të plotë dhe parcial nga gjithë shtetet e Evropës drejt <br /> Kosovës dhe Shqipërisë si dhe anasjelltas
+            <h2 className="text-base sm:text-lg md:text-xl text-gray-300 mt-4 max-w-3xl mx-auto">
+              Të plotë dhe parcial nga gjithë shtetet e Evropës drejt <br className="hidden sm:block" /> Kosovës dhe Shqipërisë si dhe anasjelltas
             </h2>
           </div>
           
@@ -72,48 +73,18 @@ export default function HeroSection() {
             >
               Shiko më shumë
             </button>
+            <button 
+              className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors min-w-[150px]"
+              onClick={scrollToCalculator}
+            >
+              Kalkulatori
+            </button>
           </div>
         </div>
         
-        {/* Bottom section with Best Offering and Free Consult */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mb-8">
-          {/* Best Offering Section */}
-          <div className="bg-black/0 p-4">
-            <h3 className="text-white font-medium mb-4 text-lg">Kontakto tani</h3>
-            <div className="flex items-center mb-3 border-b border-gray-500">
-              <input 
-                type="email" 
-                placeholder="Put your email here" 
-                className="bg-transparent text-white placeholder-gray-400 py-2 pr-10 w-full focus:outline-none"
-              />
-              <button className="text-white hover:text-blue-300 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-            </div>
-            <p className="text-gray-300 text-sm">Për më shumë informata rreth cmimores, na kontaktoni lirëshem!</p>
-            <p className="text-gray-300 text-sm mt-4">Në mund të ju ndihmojmë!</p>
-          </div>
-          
-          {/* Free Consult Section */}
-          <div className="bg-black/0 p-4">
-            <h3 className="text-white font-medium mb-4 text-lg">Konsult falas</h3>
-            <div className="flex items-center mb-3 border-b border-gray-500">
-              <input 
-                type="email" 
-                placeholder="Put your email here" 
-                className="bg-transparent text-white placeholder-gray-400 py-2 pr-10 w-full focus:outline-none"
-              />
-              <button className="text-white hover:text-blue-300 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-            </div>
-            <p className="text-gray-300 text-sm">Ne ofrojmë konsultime falas për klientin tonë.</p>
-          </div>
-        </div>
+        {/* Removing the bottom section with email inputs */}
+        {/* Adding some additional bottom margin to compensate for the removed section */}
+        <div className="mb-8"></div>
       </div>
     </section>
   );

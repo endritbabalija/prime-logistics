@@ -8,11 +8,13 @@ interface ScrollContextType {
   contactRef: RefObject<HTMLDivElement | null>;
   routesRef: RefObject<HTMLDivElement | null>;
   trackingRef: RefObject<HTMLDivElement | null>;
+  calculatorRef: RefObject<HTMLDivElement | null>;
   scrollToServices: () => void;
   scrollToAbout: () => void;
   scrollToContact: () => void;
   scrollToRoutes: () => void;
   scrollToTracking: () => void;
+  scrollToCalculator: () => void;
 }
 
 const ScrollContext = createContext<ScrollContextType | undefined>(undefined);
@@ -23,6 +25,7 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
   const contactRef = useRef<HTMLDivElement>(null);
   const routesRef = useRef<HTMLDivElement>(null);
   const trackingRef = useRef<HTMLDivElement>(null);
+  const calculatorRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
@@ -57,6 +60,10 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
     scrollToSection(trackingRef);
   };
 
+  const scrollToCalculator = () => {
+    scrollToSection(calculatorRef);
+  };
+
   return (
     <ScrollContext.Provider 
       value={{ 
@@ -65,11 +72,13 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
         contactRef,
         routesRef,
         trackingRef,
+        calculatorRef,
         scrollToServices, 
         scrollToAbout, 
         scrollToContact,
         scrollToRoutes,
-        scrollToTracking
+        scrollToTracking,
+        scrollToCalculator
       }}
     >
       {children}
