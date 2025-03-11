@@ -1,9 +1,42 @@
 "use client";
 
 import { useScroll } from '@/context/ScrollContext';
+import { useState } from 'react';
 
 export default function ContactSection() {
   const { contactRef } = useScroll();
+  const [status, setStatus] = useState('');
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus('sending');
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      });
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
 
   return (
     <section className="py-16 md:py-24 bg-[#FFFFFF]" ref={contactRef}>

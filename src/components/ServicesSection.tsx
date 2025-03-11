@@ -1,9 +1,8 @@
 "use client";
 
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useScroll } from '@/context/ScrollContext';
-import { motion } from 'framer-motion';
 
 type ServiceType = {
   id: string;
@@ -483,6 +482,12 @@ export default function ServicesSection() {
                   <p>
                     <strong>Llojet e Transportit:</strong> "Transport i plotë" do të thotë që dërgesa juaj ka një automjet të dedikuar vetëm për të, 
                     ndërsa "Transport parcial" do të thotë që pakoja juaj ndan hapësirën me dërgesa të tjera, duke rezultuar në kosto më të ulëta.
+                  </p>
+                  <p className="text-gray-600">
+                    Shërbimi &ldquo;Transport i plotë&rdquo; përfshin përdorimin ekskluziv të një kamioni për ngarkesën tuaj.
+                  </p>
+                  <p className="text-gray-600">
+                    Shërbimi &ldquo;Transport parcial&rdquo; nënkupton ndarjen e hapësirës së kamionit me ngarkesa të tjera.
                   </p>
                 </div>
               </div>
