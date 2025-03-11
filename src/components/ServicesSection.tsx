@@ -415,7 +415,7 @@ export default function ServicesSection() {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Lloji i Transportit
                     </label>
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-1">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 py-2">
                       <label className="inline-flex items-center">
                         <input
                           type="radio"
